@@ -182,7 +182,7 @@ public class FragmentGame extends Fragment {
                 ih.lay_item.setMinimumWidth(size);
                 //place values
                 ih.lbl_number.setText(c.getNumber() > 0 ? String.valueOf(c.getNumber()) : "");
-                ih.lbl_number.setBackgroundColor(getColor(c.getNumber()));
+                ih.lbl_number.setBackgroundColor(getColor(c.getExponent())); //.getNumber()));
             }
         }
 
@@ -252,7 +252,7 @@ public class FragmentGame extends Fragment {
         }
     }
 
-    public int getColor(long number){
-        return getResources().getColor(getResources().getIdentifier("color" + number, "color", getActivity().getPackageName()));
+    public int getColor(int exponent){
+        return getResources().getColor(getResources().getIdentifier("color" + exponent, "color", getActivity().getPackageName()));
     }
 }
