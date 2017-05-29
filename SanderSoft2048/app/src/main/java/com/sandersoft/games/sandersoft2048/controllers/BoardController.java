@@ -1,9 +1,12 @@
 package com.sandersoft.games.sandersoft2048.controllers;
 
+import android.content.SharedPreferences;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 
 import com.sandersoft.games.sandersoft2048.models.Cell;
+import com.sandersoft.games.sandersoft2048.utils.Globals;
 import com.sandersoft.games.sandersoft2048.views.FragmentGame;
 
 import java.util.ArrayList;
@@ -37,6 +40,8 @@ public class BoardController implements Parcelable {
         score = 0;
         scorePre = 0;
         cells.clear();
+        cellsPre.clear();
+        allowUndo = false;
         for(int i = 0; i < 16; i++){
             cells.add(new Cell());
         }
@@ -66,7 +71,7 @@ public class BoardController implements Parcelable {
         if (free.size() <= 0) return false;
         Random rand = new Random();
         int p = rand.nextInt(free.size());
-        cells.get(free.get(p)).setNewNumber(rand.nextInt(4) == 0 ? 2 : 1);
+        cells.get(free.get(p)).setNewNumber(rand.nextInt(5) == 0 ? 2 : 1);
         return true;
     }
 
@@ -309,6 +314,16 @@ public class BoardController implements Parcelable {
             initiateBoard();
         }
         view.updateUI();
+    }
+
+    public void saveCurrentBoard(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        preferences.edit().putString(Globals.GAME_BOARD, boardToString()).apply();
+    }
+    public void loadLastBoard(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        String savedBoard = preferences.getString(Globals.GAME_BOARD, "");
+        stringToBoard(savedBoard);
     }
 
     // Parcelling part

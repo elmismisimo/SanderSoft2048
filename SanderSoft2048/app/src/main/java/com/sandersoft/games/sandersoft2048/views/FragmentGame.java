@@ -84,16 +84,13 @@ public class FragmentGame extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        preferences.edit().putString(Globals.GAME_BOARD, controller.boardToString()).apply();
+        controller.saveCurrentBoard();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String savedBoard = preferences.getString(Globals.GAME_BOARD, "");
-        controller.stringToBoard(savedBoard);
+        controller.loadLastBoard();
     }
 
     public void defineElements() {
@@ -215,6 +212,7 @@ public class FragmentGame extends Fragment {
 
     public void restartGame(){
         controller.initiateBoard();
+        controller.saveCurrentBoard();
         updateUI();
     }
 
