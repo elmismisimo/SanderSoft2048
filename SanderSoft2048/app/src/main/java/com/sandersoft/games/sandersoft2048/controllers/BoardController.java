@@ -66,7 +66,7 @@ public class BoardController implements Parcelable {
         if (free.size() <= 0) return false;
         Random rand = new Random();
         int p = rand.nextInt(free.size());
-        cells.get(free.get(p)).setNumber(rand.nextInt(4) == 0 ? 4 : 2);
+        cells.get(free.get(p)).setNewNumber(rand.nextInt(4) == 0 ? 2 : 1);
         return true;
     }
 
@@ -87,18 +87,24 @@ public class BoardController implements Parcelable {
                     if (cells.get(k+1).getNumber() == 0){
                         if (!moved)
                             setPreForUndo();
-                        cells.get(k+1).setNumber(cells.get(k).getNumber());
-                        cells.get(k).setNumber(0);
+                        cells.get(k+1).setNewNumber(cells.get(k).getExponent());
+                        cells.get(k).clear();
+                        /*cells.get(k+1).setNumber(cells.get(k).getNumber());
+                        cells.get(k).setNumber(0);*/
                         moved = true;
                     } else {
                         if (cells.get(k+1).getNumber() == cells.get(k).getNumber() &&
                                 !cells.get(k+1).isLocked()){
                             if (!moved)
                                 setPreForUndo();
-                            score += cells.get(k).getNumber()*2;
+                            cells.get(k+1).increment();
+                            cells.get(k).clear();
+                            score += cells.get(k+1).getNumber();
+
+                            /*score += cells.get(k).getNumber()*2;
                             cells.get(k+1).setNumber(cells.get(k).getNumber()*2);
                             cells.get(k).setNumber(0);
-                            cells.get(k+1).setLocked(true); //avoid adding another on this
+                            cells.get(k+1).setLocked(true); //avoid adding another on this*/
                             moved = true;
                         }
                         break;
@@ -122,18 +128,24 @@ public class BoardController implements Parcelable {
                     if (cells.get(k-1).getNumber() == 0){
                         if (!moved)
                             setPreForUndo();
-                        cells.get(k-1).setNumber(cells.get(k).getNumber());
-                        cells.get(k).setNumber(0);
+                        cells.get(k-1).setNewNumber(cells.get(k).getExponent());
+                        cells.get(k).clear();
+                        /*cells.get(k-1).setNumber(cells.get(k).getNumber());
+                        cells.get(k).setNumber(0);*/
                         moved = true;
                     } else {
                         if (cells.get(k-1).getNumber() == cells.get(k).getNumber() &&
                                 !cells.get(k-1).isLocked()){
                             if (!moved)
                                 setPreForUndo();
-                            score += cells.get(k).getNumber()*2;
+                            cells.get(k-1).increment();
+                            cells.get(k).clear();
+                            score += cells.get(k-1).getNumber();
+
+                            /*score += cells.get(k).getNumber()*2;
                             cells.get(k-1).setNumber(cells.get(k).getNumber()*2);
                             cells.get(k).setNumber(0);
-                            cells.get(k-1).setLocked(true); //avoid adding another on this
+                            cells.get(k-1).setLocked(true); //avoid adding another on this*/
                             moved = true;
                         }
                         break;
@@ -157,18 +169,24 @@ public class BoardController implements Parcelable {
                     if (cells.get(k+4).getNumber() == 0){
                         if (!moved)
                             setPreForUndo();
-                        cells.get(k+4).setNumber(cells.get(k).getNumber());
-                        cells.get(k).setNumber(0);
+                        cells.get(k+4).setNewNumber(cells.get(k).getExponent());
+                        cells.get(k).clear();
+                        /*cells.get(k+4).setNumber(cells.get(k).getNumber());
+                        cells.get(k).setNumber(0);*/
                         moved = true;
                     } else {
                         if (cells.get(k+4).getNumber() == cells.get(k).getNumber() &&
                                 !cells.get(k+4).isLocked()){
                             if (!moved)
                                 setPreForUndo();
-                            score += cells.get(k).getNumber()*2;
+                            cells.get(k+4).increment();
+                            cells.get(k).clear();
+                            score += cells.get(k+4).getNumber();
+
+                            /*score += cells.get(k).getNumber()*2;
                             cells.get(k+4).setNumber(cells.get(k).getNumber()*2);
                             cells.get(k).setNumber(0);
-                            cells.get(k+4).setLocked(true); //avoid adding another on this
+                            cells.get(k+4).setLocked(true); //avoid adding another on this*/
                             moved = true;
                         }
                         break;
@@ -192,18 +210,24 @@ public class BoardController implements Parcelable {
                     if (cells.get(k-4).getNumber() == 0){
                         if (!moved)
                             setPreForUndo();
-                        cells.get(k-4).setNumber(cells.get(k).getNumber());
-                        cells.get(k).setNumber(0);
+                        cells.get(k-4).setNewNumber(cells.get(k).getExponent());
+                        cells.get(k).clear();
+                        /*cells.get(k-4).setNumber(cells.get(k).getNumber());
+                        cells.get(k).setNumber(0);*/
                         moved = true;
                     } else {
                         if (cells.get(k-4).getNumber() == cells.get(k).getNumber() &&
                                 !cells.get(k-4).isLocked()){
                             if (!moved)
                                 setPreForUndo();
-                            score += cells.get(k).getNumber()*2;
+                            cells.get(k-4).increment();
+                            cells.get(k).clear();
+                            score += cells.get(k-4).getNumber();
+
+                            /*score += cells.get(k).getNumber()*2;
                             cells.get(k-4).setNumber(cells.get(k).getNumber()*2);
                             cells.get(k).setNumber(0);
-                            cells.get(k-4).setLocked(true); //avoid adding another on this
+                            cells.get(k-4).setLocked(true); //avoid adding another on this*/
                             moved = true;
                         }
                         break;
@@ -243,11 +267,11 @@ public class BoardController implements Parcelable {
         String bp = "";
         if (!gameOver) {
             for (Cell c : cells)
-                b += "," + (c.getNumber() <= 0 ? "" : (int)(Math.log(c.getNumber()) / Math.log(2)));
+                b += "," + (c.getNumber() <= 0 ? "" : c.getExponent()); //(int)(Math.log(c.getNumber()) / Math.log(2)));
             b = score + ":" + b.substring(1) + " |";
             if (allowUndo) {
                 for (Cell c : cellsPre)
-                    bp += "," + (c.getNumber() <= 0 ? "" : (int) (Math.log(c.getNumber()) / Math.log(2)));
+                    bp += "," + (c.getNumber() <= 0 ? "" : c.getExponent()); //(int)(Math.log(c.getNumber()) / Math.log(2)));
                 bp = scorePre + ":" + bp.substring(1) + " ";
             }
         }
@@ -263,7 +287,7 @@ public class BoardController implements Parcelable {
             cells.clear();
             for (String c : b) {
                 if (c.trim().equals("")) cells.add(new Cell());
-                else cells.add(new Cell((long) Math.pow(2, Integer.valueOf(c.trim())), false));
+                else cells.add(new Cell(Integer.valueOf(c.trim()))); //(long) Math.pow(2, Integer.valueOf(c.trim())), false));
             }
             if (bs.length < 2 || bs[1].length() < 0) {
                 allowUndo = false;
@@ -275,7 +299,7 @@ public class BoardController implements Parcelable {
                 cellsPre.clear();
                 for (String c : b) {
                     if (c.trim().equals("")) cellsPre.add(new Cell());
-                    else cellsPre.add(new Cell((long) Math.pow(2, Integer.valueOf(c.trim())), false));
+                    else cellsPre.add(new Cell(Integer.valueOf(c.trim()))); //(long) Math.pow(2, Integer.valueOf(c.trim())), false));
                 }
             }
             //verify integrity
