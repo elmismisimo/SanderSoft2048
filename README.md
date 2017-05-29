@@ -1,4 +1,5 @@
 # SanderSoft2048
+Classic 2048, based on Gabriele Cirulli´s 2048
 
 Ive decided to program 2048, a game created by Gabriele Cirulli. There are a lot of versions of 2048 over the world, but my version is the same as the original.
 
