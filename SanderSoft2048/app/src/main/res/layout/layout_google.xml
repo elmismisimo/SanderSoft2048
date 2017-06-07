@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/lay_google"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_Background"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/lbl_title_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/google_play"
+                android:textSize="12pt"
+                android:textColor="@color/color_Text"
+                />
+
+            <TextView
+                android:id="@+id/lbl_subtitle_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/google_play_desc"
+                android:textColor="@color/color_Text"
+                />
+
+            <Button
+                android:id="@+id/btn_google_conn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_menu"
+                android:text="@string/google_play"
+                android:textColor="@color/color_Text"
+                />
+
+            <Button
+                android:id="@+id/btn_leaderboards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_menu"
+                android:text="@string/leaderboards"
+                android:textColor="@color/color_Text"
+                />
+
+            <Button
+                android:id="@+id/btn_achievements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_menu"
+                android:text="@string/achievements"
+                android:textColor="@color/color_Text"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

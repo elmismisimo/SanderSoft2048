@@ -79,7 +79,7 @@ public class Cell implements Parcelable {
         dest.writeLong(number);
         dest.writeInt(locked ? 1 : 0);
     }
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Creator CREATOR = new Creator() {
         public Cell createFromParcel(Parcel in) {
             return new Cell(in);
         }

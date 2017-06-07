@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay_game"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -24,13 +25,17 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:text="@string/score"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/color_Text"
+                android:textSize="9pt"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/lbl_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="000"
-                android:textColor="@color/color4"/>
+                android:textColor="@color/color4"
+                android:textSize="10pt"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -43,16 +48,30 @@
             android:orientation="horizontal"
             >
 
-            <Button
+            <ImageView
+                android:id="@+id/btn_game_google"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right"
+                android:src="@mipmap/google_w"
+                android:background="@drawable/btn"/>
+
+            <ImageView
+                android:id="@+id/btn_restart_game"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/restart_w"
+                android:background="@drawable/btn"/>
+
+            <ImageView
                 android:id="@+id/btn_undo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/undo"/>
-            <Button
-                android:id="@+id/btn_restart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/restart"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/undo_w"
+                android:background="@drawable/btn"/>
 
         </LinearLayout>
 
@@ -72,4 +91,27 @@
             />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="#55000000"
+        android:visibility="gone">
+
+        <ViewFlipper
+            android:id="@+id/sld_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/layout_game_menu" />
+            <include layout="@layout/layout_settings" />
+            <include layout="@layout/layout_google" />
+            <include layout="@layout/layout_game_completed" />
+            <include layout="@layout/layout_game_over" />
+        </ViewFlipper>
+
+    </LinearLayout>
 </RelativeLayout>
