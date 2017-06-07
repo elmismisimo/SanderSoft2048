@@ -1,14 +1,19 @@
 package com.sandersoft.games.sandersoft2048.controllers;
 
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 
+import com.sandersoft.games.sandersoft2048.R;
 import com.sandersoft.games.sandersoft2048.models.Cell;
+import com.sandersoft.games.sandersoft2048.utils.Globals;
+import com.sandersoft.games.sandersoft2048.views.ActivityMain;
 import com.sandersoft.games.sandersoft2048.views.FragmentGame;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by meixi on 27/05/2017.
@@ -23,6 +28,7 @@ public class BoardController implements Parcelable {
     long score = 0;
     long scorePre = 0;
     boolean allowUndo = false;
+    boolean waiting = false;
 
     public BoardController(FragmentGame fragmentGame){
         setView(fragmentGame);
@@ -44,6 +50,14 @@ public class BoardController implements Parcelable {
         addNewNumber();
         addNewNumber();
     }
+    public void restart(){
+        initiateBoard();
+        clearUndo();
+        view.saveGame("");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        preferences.edit().putBoolean(Globals.GAME_COMPLETED, false).apply();
+        preferences.edit().putBoolean(Globals.GAME_UNDO, false).apply();
+    }
 
     public ArrayList<Cell> getCells(){
         return cells;
@@ -51,9 +65,14 @@ public class BoardController implements Parcelable {
     public long getScore(){
         return score;
     }
-
     public boolean isAllowUndo() {
         return allowUndo;
+    }
+    public boolean isGameOver() {
+        return gameOver;
+    }
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 
     private boolean addNewNumber(){
@@ -67,7 +86,8 @@ public class BoardController implements Parcelable {
         Random rand = new Random();
         int p = rand.nextInt(free.size());
         cells.get(free.get(p)).setNewNumber(rand.nextInt(4) == 0 ? 2 : 1);
-        return true;
+        //verify if board is full and nothing can be summed
+        return free.size() > 1 || verifyGameOver();
     }
 
     private void unlockAllCells(){
@@ -76,7 +96,7 @@ public class BoardController implements Parcelable {
         }
     }
     public boolean mergeRight(){
-        if (gameOver) return gameOver;
+        if (gameOver || waiting) return gameOver;
         boolean moved = false;
         //unlock all cells
         unlockAllCells();
@@ -99,7 +119,9 @@ public class BoardController implements Parcelable {
                                 setPreForUndo();
                             cells.get(k+1).increment();
                             cells.get(k).clear();
-                            score += cells.get(k+1).getNumber();
+                            long number = cells.get(k+1).getNumber();
+                            verify2048Achievements(number);
+                            score += number;
 
                             /*score += cells.get(k).getNumber()*2;
                             cells.get(k+1).setNumber(cells.get(k).getNumber()*2);
@@ -112,12 +134,15 @@ public class BoardController implements Parcelable {
                 }
             }
         }
-        if (moved)
-            gameOver = !addNewNumber();
-        return finishMerge();
+        finishMerge();
+        if (moved) {
+            verifyGameCompleted();
+            new PostMerge().execute();
+        }
+        return gameOver;
     }
     public boolean mergeLeft(){
-        if (gameOver) return gameOver;
+        if (gameOver || waiting) return gameOver;
         boolean moved = false;
         //unlock all cells
         unlockAllCells();
@@ -140,7 +165,9 @@ public class BoardController implements Parcelable {
                                 setPreForUndo();
                             cells.get(k-1).increment();
                             cells.get(k).clear();
-                            score += cells.get(k-1).getNumber();
+                            long number = cells.get(k-1).getNumber();
+                            verify2048Achievements(number);
+                            score += number;
 
                             /*score += cells.get(k).getNumber()*2;
                             cells.get(k-1).setNumber(cells.get(k).getNumber()*2);
@@ -153,12 +180,15 @@ public class BoardController implements Parcelable {
                 }
             }
         }
-        if (moved)
-            gameOver = !addNewNumber();
-        return finishMerge();
+        finishMerge();
+        if (moved) {
+            verifyGameCompleted();
+            new PostMerge().execute();
+        }
+        return gameOver;
     }
     public boolean mergeDown(){
-        if (gameOver) return gameOver;
+        if (gameOver || waiting) return gameOver;
         boolean moved = false;
         //unlock all cells
         unlockAllCells();
@@ -181,7 +211,9 @@ public class BoardController implements Parcelable {
                                 setPreForUndo();
                             cells.get(k+4).increment();
                             cells.get(k).clear();
-                            score += cells.get(k+4).getNumber();
+                            long number = cells.get(k+4).getNumber();
+                            verify2048Achievements(number);
+                            score += number;
 
                             /*score += cells.get(k).getNumber()*2;
                             cells.get(k+4).setNumber(cells.get(k).getNumber()*2);
@@ -194,12 +226,15 @@ public class BoardController implements Parcelable {
                 }
             }
         }
-        if (moved)
-            gameOver = !addNewNumber();
-        return finishMerge();
+        finishMerge();
+        if (moved) {
+            verifyGameCompleted();
+            new PostMerge().execute();
+        }
+        return gameOver;
     }
     public boolean mergeUp(){
-        if (gameOver) return gameOver;
+        if (gameOver || waiting) return gameOver;
         boolean moved = false;
         //unlock all cells
         unlockAllCells();
@@ -222,7 +257,9 @@ public class BoardController implements Parcelable {
                                 setPreForUndo();
                             cells.get(k-4).increment();
                             cells.get(k).clear();
-                            score += cells.get(k-4).getNumber();
+                            long number = cells.get(k-4).getNumber();
+                            verify2048Achievements(number);
+                            score += number;
 
                             /*score += cells.get(k).getNumber()*2;
                             cells.get(k-4).setNumber(cells.get(k).getNumber()*2);
@@ -235,13 +272,98 @@ public class BoardController implements Parcelable {
                 }
             }
         }
-        if (moved)
-            gameOver = !addNewNumber();
-        return finishMerge();
-    }
-    public boolean finishMerge(){
-        view.updateUI();
+        finishMerge();
+        if (moved) {
+            verifyGameCompleted();
+            new PostMerge().execute();
+        }
         return gameOver;
+    }
+    public void finishMerge(){
+        view.updateUI();
+    }
+
+    private class PostMerge extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            waiting = true;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try{
+                Thread.sleep(50);
+            }catch (Exception ex){}
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            waiting = false;
+            gameOver = !addNewNumber();
+            view.updateUI();
+            if (gameOver)
+                view.gameOver();
+        }
+    }
+
+    public void verifyGameCompleted(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        if (!preferences.getBoolean(Globals.GAME_COMPLETED, false)){
+            boolean is2048 = false;
+            for (Cell c : cells)
+                if (c.getNumber() == 2048) {
+                    preferences.edit().putBoolean(Globals.GAME_COMPLETED, true).apply();
+                    view.gameCompleted();
+                    break;
+                }
+        }
+    }
+    public boolean verifyGameOver(){
+        for (int i = 0; i < 16; i++){
+            int row = i / 4;
+            //check to he right
+            if (i+1 < 16 && row == (i+1)/4 && cells.get(i).getNumber() == cells.get(i+1).getNumber()) return true;
+            //check to he left
+            if (i-1 >= 0 && row == (i-1)/4 && cells.get(i).getNumber() == cells.get(i-1).getNumber()) return true;
+            //check up
+            if (i-4 >= 0 && cells.get(i).getNumber() == cells.get(i-4).getNumber()) return true;
+            //check down
+            if (i+4 < 16 && cells.get(i).getNumber() == cells.get(i+4).getNumber()) return true;
+        }
+        return false;    }
+
+    public void verify2048Achievements(long number){
+        if (number == 2048){
+            //2048 achievement
+            ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_2048);
+            //winner achievement
+            ((ActivityMain)view.getActivity()).getGameManager().unlockIncrementalAchievement(R.string.achievement_winner, 1);
+            //master achievement
+            ((ActivityMain)view.getActivity()).getGameManager().unlockIncrementalAchievement(R.string.achievement_master, 1);
+            //lord achievement
+            ((ActivityMain)view.getActivity()).getGameManager().unlockIncrementalAchievement(R.string.achievement_lord, 1);
+            //no undos achievement
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+            if (!preferences.getBoolean(Globals.GAME_UNDO, false)){
+                ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_no_undos);
+            }
+        }
+        //awesome achievement
+        else if (number == 4096) ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_awesome);
+        //yeah achievement
+        else if (number == 8192) ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_yeah);
+        //keep going achievement
+        else if (number == 16384) ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_keep_going);
+        //brutal achievement
+        else if (number == 32768) ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_brutal);
+        //ascended achievement
+        else if (number == 65536) ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_ascended);
+        //impossible achievement
+        else if (number == 131072) ((ActivityMain)view.getActivity()).getGameManager().unlockAchievement(R.string.achievement_impossible);
     }
 
     private void setPreForUndo(){
@@ -259,7 +381,16 @@ public class BoardController implements Parcelable {
         for (Cell c : cellsPre)
             cells.add(c.clone());
         score = scorePre;
+        clearUndo();
         view.updateUI();
+        //mark that we already made an undo in this game
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        preferences.edit().putBoolean(Globals.GAME_UNDO, true).apply();
+    }
+    public void clearUndo(){
+        cellsPre.clear();
+        scorePre = 0;
+        allowUndo = false;
     }
 
     public String boardToString(){
@@ -333,7 +464,7 @@ public class BoardController implements Parcelable {
         dest.writeLong(scorePre);
         dest.writeInt(allowUndo ? 1 : 0);
     }
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Creator CREATOR = new Creator() {
         public BoardController createFromParcel(Parcel in) {
             return new BoardController(in);
         }

@@ -1,7 +1,52 @@
 <resources>
     <string name="app_name">2048</string>
+    <string name="app_name_by">by SanderSoft</string>
 
     <string name="score">Score</string>
+
+    <string name="cancel">Cancel</string>
+
+    <string name="play">Play</string>
+    <string name="google_play">Google Play</string>
+    <string name="google_play_desc">Connect to Google Play Games</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="leaderboards">Leaderboards</string>
+    <string name="achievements">Achievements</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="sound">Sound</string>
+    <string name="light">Switch to Dark Theme</string>
+    <string name="dark">Switch to Light Theme</string>
     <string name="restart">Restart</string>
+    <string name="quit">Quit</string>
+    <string name="settings">Settings</string>
+
+    <string name="congrats">Congratulations!</string>
+    <string name="completed">You have made it up to 2048!</string>
+    <string name="game_over">Game Over</string>
+    <string name="new_game">New Game</string>
+    <string name="continue_play">Continue Playing</string>
     <string name="undo">Undo</string>
+
+    <string name="about">Created and Developed by</string>
+    <string name="version">Version:</string>
+
+    <string name="menu_rate">Rate Us</string>
+    <string name="menu_support">Support Us</string>
+    <string name="support_desc">SanderSoft is an Indie Developer Studio that believe in free options to share with the rest of the world, nonetheless we like to eat also!\nBut we wont bomb you with unsolicited and annoying ads.\nIts up to you to decide to support us or not. We wont judge.\nIf you do, press the button SUPPORT (as soon as the button is enabled) and an ad popup will show up, click it and we will be very, very thankful!\nThank You!</string>
+    <string name="support_btn">SUPPORT</string>
+
+    <string name="tutorial_t">How to Play</string>
+    <string name="tutorial_1">2048 is a game where you have add cells of the same number, until you reach the value 2048.</string>
+    <string name="tutorial_2_t">Moving Cells</string>
+    <string name="tutorial_2">To move cells over the grid swipe your finger up, left, down and right.\nThe cells will move all the way to the border or stack with other cells.</string>
+    <string name="tutorial_3_t">Adding</string>
+    <string name="tutorial_3">When you move the cells in any direction, the cells that are in the same place and have the same number will merge in one cell with the sum value of both.\nAdd all the cells you need to reach a cell with the value 2048</string>
+    <string name="tutorial_4_t">Game Over Conditions</string>
+    <string name="tutorial_4">The game finishes when you reach 2048 or fill the grid with unsummable cells.\nRemember that 2048 is a logical and strategy game, thus brute force will only help you in rare occasions and wont take very far.\nGood luck!</string>
+    <string name="tutorial_next">Next</string>
+    <string name="tutorial_skip">Skip Tutorial</string>
+    <string name="tutorial_play">Lets Play!</string>
+
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:id="@+id/lay_game_completed"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_Background"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/lbl_completed_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/congrats"
+            android:textSize="18pt"
+            android:textColor="@color/color_Text"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/lbl_completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/completed"
+            android:textColor="@color/color_Text"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/btn_new_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_menu"
+            android:text="@string/new_game"
+            android:textColor="@color/color_Text"/>
+
+        <Button
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_menu"
+            android:text="@string/continue_play"
+            android:textColor="@color/color_Text"/>
+
+
+    </LinearLayout>
+</LinearLayout>

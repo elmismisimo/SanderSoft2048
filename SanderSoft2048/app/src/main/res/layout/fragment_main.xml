@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay_main_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_Background"
+    android:gravity="center"
+    android:animateLayoutChanges="true">
+
+    <ViewFlipper
+        android:id="@+id/sld_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/layout_main_menu" />
+        <include layout="@layout/layout_settings" />
+        <include layout="@layout/layout_about" />
+        <include layout="@layout/layout_google" />
+    </ViewFlipper>
+
+</LinearLayout>

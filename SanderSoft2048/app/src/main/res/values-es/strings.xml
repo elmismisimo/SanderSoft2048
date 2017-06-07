@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">2048</string>
+    <string name="app_name_by">by SanderSoft</string>
+
+    <string name="score">Puntaje</string>
+
+    <string name="cancel">Cancelar</string>
+
+    <string name="play">Jugar</string>
+    <string name="google_play">Google Play</string>
+    <string name="google_play_desc">Conectar a Google Play Games</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="leaderboards">Tablas de clasificación</string>
+    <string name="achievements">Logros</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="sound">Sonido</string>
+    <string name="light">Cambiar a Tema Oscuro</string>
+    <string name="dark">Cambiar a Tema Claro</string>
+    <string name="restart">Reiniciar</string>
+    <string name="quit">Salir</string>
+    <string name="settings">Ajustes</string>
+
+    <string name="congrats">Felicidades!</string>
+    <string name="completed">Haz logrado llegar a 2048!</string>
+    <string name="game_over">Juego Terminado</string>
+    <string name="new_game">Nuevo Juego</string>
+    <string name="continue_play">Continuar Jugando</string>
+    <string name="undo">Deshacer</string>
+
+    <string name="about">Creado y Desarrollado por</string>
+    <string name="version">Versión:</string>
+
+    <string name="menu_rate">Calificanos</string>
+    <string name="menu_support">Apoyanos</string>
+    <string name="support_desc">Sandersoft es un Estudio de Desarrollo Independiente donde creemos en opciones gratuitas para compartir con el resto del mundo, ¡sin embargo también nos gusta mucho comer!\nPero no te bombardearemos con publicidad molesta e inoportuna.\nEs tu decisión decidir si nos apoyas o no. No juzgaremos.\nSi deseas apoyarnos, presiona el botón APOYAR (en cuanto se habilite) y se desplegará un anuncio, dale click y ¡estaremos muy, muy agradecidos!\n¡Muchas Gracias!</string>
+    <string name="support_btn">APOYAR</string>
+
+    <string name="tutorial_t">Cómo Jugar</string>
+    <string name="tutorial_1">2048 es un juego donde tienes que sumar celdas del mismo valor, hasta que llegues al valor 2048.</string>
+    <string name="tutorial_2_t">Mover Celdas</string>
+    <string name="tutorial_2">Para mover celdas en el tablero desliza tu dedo hacia arriba, derecha, abajo e izquierda.\nLas celdas se moveran hasta el borde o se apilaran con otras celdas.</string>
+    <string name="tutorial_3_t">Sumar Celdas</string>
+    <string name="tutorial_3">Cuando mueves celdas en una direccion, las celdas que estan en contacto directo, en la misma direccion y tienen el mismo valor, se fusionaran en una sola celda con el valor igual a la suma de esas dos celdas.\nSuma todas las celdas que necesites para alcanzar una celda con el valor 2048.</string>
+    <string name="tutorial_4_t">Condiciones de Juego Terminado</string>
+    <string name="tutorial_4">El juego termina cuando se genera una celda de valor 2048 o el tablero se llena de caldas que no se pueden sumar.\nRecuerda que 2048 es un juego de lógica y de estrategia, por lo que la fuerza bruta solo le ayudará en raras ocasiones y no te llevará muy lejos.\n¡Buena suerte!</string>
+    <string name="tutorial_next">Siguiente</string>
+    <string name="tutorial_skip">Saltar Tutorial</string>
+    <string name="tutorial_play">¡A Jugar!</string>
+
+</resources>

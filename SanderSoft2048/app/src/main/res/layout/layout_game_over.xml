@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:id="@+id/lay_game_over"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_Background"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/lbl_over_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/game_over"
+            android:textSize="18pt"
+            android:textColor="@color/color_Text"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/btn_restart_gameover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_menu"
+            android:text="@string/restart"
+            android:textColor="@color/color_Text"/>
+
+        <Button
+            android:id="@+id/btn_undo_gameover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_menu"
+            android:text="@string/undo"
+            android:textColor="@color/color_Text"/>
+
+    </LinearLayout>
+</LinearLayout>

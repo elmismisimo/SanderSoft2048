@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">2048</string>
+    <string name="app_name_by">by SanderSoft</string>
+
+    <string name="score">Punts</string>
+
+    <string name="cancel">Cancel·la</string>
+
+    <string name="play">Jugar</string>
+    <string name="google_play">Google Play</string>
+    <string name="google_play_desc">Conectar a Google Play Games</string>
+    <string name="connected">En línia</string>
+    <string name="disconnected">Desconnectat</string>
+    <string name="leaderboards">Taules de Classificació</string>
+    <string name="achievements">Assoliments</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="sound">​​So</string>
+    <string name="light">Canviar a Tema Fosc</string>
+    <string name="dark">Canviar a Tema Clar</string>
+    <string name="restart">Reinicia</string>
+    <string name="quit">Sortir</string>
+    <string name="settings">Configuració</string>
+
+    <string name="congrats">Felicitats!</string>
+    <string name="completed">Fes aconseguit arribar a 2048!</string>
+    <string name="game_over">Joc Acabat</string>
+    <string name="new_game">Nou Joc</string>
+    <string name="continue_play">Continua Jugant</string>
+    <string name="undo">Desfer</string>
+
+    <string name="about">Creat i Desenvolupat per</string>
+    <string name="version">Versió:</string>
+
+    <string name="menu_rate">Puntua\'ns</string>
+    <string name="menu_support">Donar-nos Suport</string>
+    <string name="support_desc">Sandersoft és un Estudi de Desenvolupament Independent on creiem en opcions gratuïtes per compartir amb la resta del món, però també ens agrada molt menjar!\nPero no et bombardejarem amb publicitat molesta i inoportuna.\nÉs la teva decisió decidir si ens dones suport o no. No jutjarem.\nSi vols donar-nos suport, pressiona el botó DONAR SUPORT (quant estigui habilitat) i es desplegarà un anunci, dóna-li clic i estarem molt, molt agraïts!\n¡Moltas Gràcies!</string>
+    <string name="support_btn">DONAR SUPORT</string>
+
+    <string name="tutorial_t">Com Jugar</string>
+    <string name="tutorial_1">2048 és un joc on has de sumar cel·les del mateix valor, fins que arribis al valor 2048.</string>
+    <string name="tutorial_2_t">Mou Cel·les</string>
+    <string name="tutorial_2">Per moure cel·les sota el tauler llisca el dit cap amunt, dreta, a sota i esquerra.\nLes cel·les es mouran fins a la vora o s\'apilaran amb altres cel·les.</string>
+    <string name="tutorial_3_t">Sumar Cel·les</string>
+    <string name="tutorial_3">Quan mous cel·les en una adreça, les cel·les que estan en contacte directe, en la mateixa direccio i tenen el mateix valor, es fusionessin en una sola cel·la amb el valor igual a la suma d\'aquestes dues cel·les.\nSuma totes les cel·les que necessitis per arribar a una cel·la amb el valor 2048.</string>
+    <string name="tutorial_4_t">Condicions de Joc Acabat</string>
+    <string name="tutorial_4">El joc acaba quan es genera una cel·la de valor 2048 o el tauler s\'omple de cal·les que no es poden sumar.\nRecuerda que 2048 és un joc de lògica i d\'estratègia, de manera que la força bruta només l\'ajudarà en rares ocasions i no et portarà molt lluny.\nBuena sort!</string>
+    <string name="tutorial_next">Següent</string>
+    <string name="tutorial_skip">Saltar-se el tutorial</string>
+    <string name="tutorial_play">A Jugar!</string>
+
+</resources>
