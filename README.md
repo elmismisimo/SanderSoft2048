@@ -9,4 +9,6 @@ Any way here it is, simple and plain. I hope you enjoy it.
 
 Im going to put more work to it, more or less what I did to Mine Sweeper, and then Im going to upload it to Play Store also (I know there are millions of versions of 2048 there, but i dont mind, its just for the fun)
 
+UPDATE (7/6/2017): The game is finished and published, please find it at https://play.google.com/store/apps/details?id=com.sandersoft.games.sandersoft2048
+
 Enjoy!
