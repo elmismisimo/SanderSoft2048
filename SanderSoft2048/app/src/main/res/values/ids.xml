@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string translatable="false" name="app_id">832681189835</string>
-    <string translatable="false" name="score_2048">CgkIy8Oq_Z0YEAIQAQ</string>
+    <string translatable="false" name="app_id">832...</string>
+    <string translatable="false" name="score_2048">Cgk...</string>
 
-    <string translatable="false" name="achievement_2048">CgkIy8Oq_Z0YEAIQAg</string>
-    <string translatable="false" name="achievement_winner">CgkIy8Oq_Z0YEAIQAw</string>
-    <string translatable="false" name="achievement_master">CgkIy8Oq_Z0YEAIQBA</string>
-    <string translatable="false" name="achievement_lord">CgkIy8Oq_Z0YEAIQBQ</string>
-    <string translatable="false" name="achievement_awesome">CgkIy8Oq_Z0YEAIQBg</string>
-    <string translatable="false" name="achievement_yeah">CgkIy8Oq_Z0YEAIQBw</string>
-    <string translatable="false" name="achievement_keep_going">CgkIy8Oq_Z0YEAIQCA</string>
-    <string translatable="false" name="achievement_brutal">CgkIy8Oq_Z0YEAIQCQ</string>
-    <string translatable="false" name="achievement_ascended">CgkIy8Oq_Z0YEAIQCg</string>
-    <string translatable="false" name="achievement_impossible">CgkIy8Oq_Z0YEAIQCw</string>
-    <string translatable="false" name="achievement_quitter">CgkIy8Oq_Z0YEAIQDA</string>
-    <string translatable="false" name="achievement_persistent">CgkIy8Oq_Z0YEAIQDQ</string>
-    <string translatable="false" name="achievement_no_undos">CgkIy8Oq_Z0YEAIQDg</string>
-    <string translatable="false" name="achievement_who_is_that_guy">CgkIy8Oq_Z0YEAIQDw</string>
-    <string translatable="false" name="achievement_oh_my_eyes">CgkIy8Oq_Z0YEAIQEA</string>
+    <string translatable="false" name="achievement_2048">Cgk...</string>
+    <string translatable="false" name="achievement_winner">Cgk...</string>
+    <string translatable="false" name="achievement_master">Cgk...</string>
+    <string translatable="false" name="achievement_lord">Cgk...</string>
+    <string translatable="false" name="achievement_awesome">Cgk...</string>
+    <string translatable="false" name="achievement_yeah">Cgk...</string>
+    <string translatable="false" name="achievement_keep_going">Cgk...</string>
+    <string translatable="false" name="achievement_brutal">Cgk...</string>
+    <string translatable="false" name="achievement_ascended">Cgk...</string>
+    <string translatable="false" name="achievement_impossible">Cgk...</string>
+    <string translatable="false" name="achievement_quitter">Cgk...</string>
+    <string translatable="false" name="achievement_persistent">Cgk...</string>
+    <string translatable="false" name="achievement_no_undos">Cgk...</string>
+    <string translatable="false" name="achievement_who_is_that_guy">Cgk...</string>
+    <string translatable="false" name="achievement_oh_my_eyes">Cgk...</string>
 </resources>
